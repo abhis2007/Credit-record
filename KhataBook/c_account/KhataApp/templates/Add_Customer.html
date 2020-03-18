@@ -1,0 +1,66 @@
+{% extends "basic.html" %}
+
+{% block block_style %}
+#v_btn{
+float:right;
+}
+
+.btn{
+opacity:0.7;
+letter-spacing:0.5rem;
+text-transform:uppercase;
+}
+.btn:hover{
+background-color:red;
+opacity:1;
+}
+#forms{
+display:none;
+}
+{% endblock %}
+
+{% block block_title %}Accounts{% endblock %}
+
+{% block block_body %}
+<div class="row mt-4">
+    <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xs-1"></div>
+    <div id="forms" class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xs-8">
+        <form action="/add" method="POST">{% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Customer First Name" name="first_name">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Customer Last Name" name="last_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Customer Contact Number" name="c_no">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Customer Email-Id" name="email">
+                    </div>
+                </div>
+            </div>
+        <button type="submit" class="btn btn-block btn-success">Submit</button>
+        </form>
+    </div>
+</div>
+<button class="button btn-danger" style="width:40px; height:200px;" onclick="show()"><div style="width:1ch; word-wrap:break-word;">ADD NEW</div></button>
+
+{% endblock %}
+
+{% block block_javascript %}
+function show(){
+document.getElementById("forms").style.display="block";
+}
+{% endblock %}
+

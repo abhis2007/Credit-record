@@ -1,0 +1,62 @@
+{% extends "basic.html" %}
+
+{% block block_style %}
+#t{
+margin-left:1px;
+margin-top:1px;
+color:blue;
+}
+
+#in_line{
+margin-left:5px;
+width:105px;
+letter-spacing:0.1rem;
+border:round 1px red;
+}
+.btn:hover{
+background-color:green;
+}
+{% endblock %}
+
+{% block block_title %}-{% endblock %}
+
+{% block block_body %}
+
+{% for i in params2|slice:"0:"%}
+<div id="t" class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2 h5">{{i.first_name}}{{i.last_name}}</div>
+    <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1 h5">{{i.phone_number}}</div>
+    <div id="in_line" class="btn btn-btn-sm btn-danger">Delete</div>
+    <div id="in_line" class="btn btn-btn-sm btn-danger">Edit</div>
+    <div id="in_line" class="btn btn-btn-sm btn-danger">Add New</div>
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+    <div class="col-sm-10 col-md-10 col-lg-10 col-xs-10 pt-2">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2 h4">Product Name</div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1 h4">Price</div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1 h4">QTY.</div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2 h4">Tot. Amt.</div>
+        </div>
+    </div>
+</div>
+{%for i in params1|slice:"1:"%}
+
+<div class="row">
+    <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+    <div class="col-sm-10 col-md-10 col-lg-10 col-xs-10 pt-2">
+        <div class="row">
+             {{forloop.counter}}.
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">{{i.product_name}}</div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">{{i.product_price}}</div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">{{i.product_qty}}</div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">{{i.total_amount}}</div>
+
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+{% endblock %}
